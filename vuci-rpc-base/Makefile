@@ -16,20 +16,20 @@ PKG_LICENSE:=GPL-3.0
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
-define Build/Prepare
-	$(INSTALL_DIR) $(PKG_BUILD_DIR)
-	$(CP) ./src/* $(PKG_BUILD_DIR)/
-endef
-
 define Package/vuci-rpc-base
   SECTION:=vuci
   CATEGORY:=VUCI
   TITLE:=Base VUCI RPC calls
-  DEPENDS:=+rpcd +libubox +libubus
+  DEPENDS:=+rpcd-mod-iwinfo +rpcd-mod-rpcsys +uhttpd-mod-ubus
 endef
 
 define Package/vuci-rpc-base/description
  Provides the basic RPC infrastructure to run VUCI.
+endef
+
+define Build/Prepare
+	$(INSTALL_DIR) $(PKG_BUILD_DIR)
+	$(CP) ./src/* $(PKG_BUILD_DIR)/
 endef
 
 define Package/vuci-rpc-base/install
