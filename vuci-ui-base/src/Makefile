@@ -11,7 +11,7 @@ all: build
 	then \
 		tar Jxvf node_modules.tar.xz && rm node_modules.tar.xz; \
 	else \
-		$(STAGING_DIR_HOSTPKG)/bin/npm install; \
+		npm install; \
 	fi
 	mkdir -p .tmp
 	touch .tmp/.download_stamp
@@ -19,4 +19,4 @@ all: build
 prepare: .tmp/.download_stamp
 
 build: prepare
-	$(STAGING_DIR_HOSTPKG)/bin/npm run build
+	npm run build
