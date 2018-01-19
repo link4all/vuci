@@ -14,7 +14,8 @@ PKG_LICENSE:=GPL-3.0
 
 PKG_BUILD_PARALLEL:=1
 
-PKG_BUILD_DEPENDS:=node/host
+PKG_BUILD_DEPENDS:=!VUCI_USE_HOST_NODE:node/host
+PKG_CONFIG_DEPENDS:=CONFIG_VUCI_USE_HOST_NODE
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -28,6 +29,16 @@ endef
 define Package/vuci-ui-base/description
  Provides the VUCI Javascript UCI web interface with standard functionality.
  It is built using vue.js2 and element.
+endef
+
+define Package/vuci-ui-base/config
+	config VUCI_USE_HOST_NODE
+		depends on PACKAGE_vuci-ui-base
+		bool "Use existing nodejs installation on the host system"
+		default n
+		help
+			This disables the build dependency on the node package from the
+			OpenWrt packages feed, allowing for faster development builds.
 endef
 
 define Build/Prepare

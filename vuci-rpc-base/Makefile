@@ -20,7 +20,7 @@ define Package/vuci-rpc-base
   SECTION:=vuci
   CATEGORY:=VUCI
   TITLE:=Base VUCI RPC calls
-  DEPENDS:=+rpcd-mod-iwinfo +rpcd-mod-rpcsys +uhttpd-mod-ubus
+  DEPENDS:=+rpcd +rpcd-mod-iwinfo +rpcd-mod-rpcsys +uhttpd-mod-ubus
 endef
 
 define Package/vuci-rpc-base/description
