@@ -4,7 +4,7 @@ import router from './router'
 import ubus from './plugins/ubus.js'
 import menu from './plugins/menu.js'
 import system from './plugins/system.js'
-import {Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem, Table, Spin} from 'iview';
+import {Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem, Table, Spin, Modal, Message} from 'iview';
 import 'iview/dist/styles/iview.css'
 import store from './store'
 import 'string-format-js'
@@ -30,6 +30,9 @@ Vue.component('Submenu', Submenu);
 Vue.component('MenuItem', MenuItem);
 Vue.component('Table', Table);
 Vue.component('Spin', Spin);
+
+Vue.prototype.$Message = Message;
+Vue.prototype.$Modal = Modal;
 
 router.beforeEach((to, from, next) => {
 	if (to.path == '/login')

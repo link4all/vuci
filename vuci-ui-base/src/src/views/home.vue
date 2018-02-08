@@ -30,19 +30,23 @@
             </Content>
             <Footer class="layout-copy">2017 &copy; Jianhui Zhao</Footer>
         </Layout>
+        <Spin fix v-if="rebooting">
+            <Icon type="load-a" size=100 class="loading"></Icon>
+            <div>Rebooting...</div>
+        </Spin>
     </Layout>
 </template>
 
 <script>
 
 import axios from 'axios'
-import modal from '../../node_modules/iview/src/components/modal'
 import { mapGetters } from 'vuex'
 
 export default {
     data() {
         return {
-            shrink: false
+            shrink: false,
+            rebooting: false
         }
     },
     computed: {
@@ -64,7 +68,7 @@ export default {
             this.$router.push('/login');
         },
         reboot() {
-            modal.confirm({
+            this.$Modal.confirm({
                 title: 'Reboot',
                 content: '<p>Are you sure you want to restart your device?</p>',
                 onOk: () => {
@@ -80,22 +84,7 @@ export default {
                     });
 
                     window.setTimeout(() => {
-                        modal.confirm({
-                            title: 'Reboot',
-                            render: (h) => {
-                                return h('Spin', [
-                                    h('Icon', {
-                                        props: {
-                                            type: 'load-a',
-                                            size: 40,
-                                            class: 'loading',
-                                            style: 'animation: ani-demo-spin 1s linear infinite'
-                                        }
-                                    }),
-                                    h('div', 'Loading')
-                                ]);
-                            }
-                        });
+                        this.rebooting = true;
                     }, 500);
                 }
             });

@@ -64,10 +64,8 @@
                                 });
                             }
                         }).catch((r) => {
-                            console.log('Login Fail! ' + JSON.stringify(r));
+                            this.$Message.error('Login Fail! username or password wrong.');
                         });
-                    } else {
-                        console.log('Login Fail!');
                     }
                 });
             }
