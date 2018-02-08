@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2017  Jianhui Zhao <jianhuizhao329@gmail.com>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,31 +24,31 @@ import * as ubus from './ubus.js'
  * @param menu
  */
 function _toChildTree(menu) {
-	const root = { title: 'root', index: 0, childs: {} };
-	let node;
+    const root = { title: 'root', index: 0, childs: {} };
+    let node;
 
-	if (!menu) return root;
+    if (!menu) return root;
 
-	for (const key in menu) {
-		if (menu.hasOwnProperty(key)) {
-			const path = key.split(/\//);
-			node = root;
+    for (const key in menu) {
+        if (menu.hasOwnProperty(key)) {
+            const path = key.split(/\//);
+            node = root;
 
-			for (let i = 0; i < path.length; i++) {
-			if (!node.childs)
-				node.childs = {};
+            for (let i = 0; i < path.length; i++) {
+            if (!node.childs)
+                node.childs = {};
 
-			if (!node.childs[path[i]])
-				node.childs[path[i]] = {path: '/' + path.slice(0, i + 1).join('/')};
-				node = node.childs[path[i]];
-			}
+            if (!node.childs[path[i]])
+                node.childs[path[i]] = {path: '/' + path.slice(0, i + 1).join('/')};
+                node = node.childs[path[i]];
+            }
 
-			Object.assign(node, menu[key]);
-			if (!node.title) node.title = node.path;
-		}
-	}
+            Object.assign(node, menu[key]);
+            if (!node.title) node.title = node.path;
+        }
+    }
 
-	return root;
+    return root;
 }
 
 /**
@@ -82,21 +82,21 @@ function _toChildArray(node) {
 
 const menu = {}
 
-menu.install  = function (Vue, options) {
-	if (menu.installed)
-		return;
+menu.install = function (Vue, options) {
+    if (menu.installed)
+        return;
 
-	Vue.prototype.$loadMenu = function() {
-		return new Promise(function(resolve, reject) {
-			ubus.call('vuci.ui', 'menu').then((r) => {
-				if (r[0].menu) {
-					resolve(_toChildArray(_toChildTree(r[0].menu)));
-				}
-			});
-		});
-	}
+    Vue.prototype.$loadMenu = function() {
+        return new Promise(function(resolve, reject) {
+            ubus.call('vuci.ui', 'menu').then((r) => {
+                if (r[0].menu) {
+                    resolve(_toChildArray(_toChildTree(r[0].menu)));
+                }
+            });
+        });
+    }
 
-	menu.installed = true;
+    menu.installed = true;
 }
 
 export default menu

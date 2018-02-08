@@ -1,8 +1,8 @@
 <template>
-	<div>
+    <div>
         <h1>Status</h1>
         <Card :bordered="false" class="card">
-		  <p slot="title">System</p>
+          <p slot="title">System</p>
             <Table :show-header="false" :loading="loading" :columns="columns_system" :data="data_system"></Table>
         </Card>
 
@@ -10,7 +10,7 @@
           <p slot="title">Memory</p>
             <Table :show-header="false" :loading="loading" :columns="columns_mem" :data="data_mem       "></Table>
         </Card>
-	</div>
+    </div>
 </template>
 
 <style scoped>

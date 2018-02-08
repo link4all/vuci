@@ -8,6 +8,7 @@ import {Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu
 import 'iview/dist/styles/iview.css'
 import store from './store'
 import 'string-format-js'
+import { mapGetters } from 'vuex'
 
 Vue.config.productionTip = false
 
@@ -36,34 +37,31 @@ Vue.prototype.$Message = Message;
 Vue.prototype.$Modal = Modal;
 
 router.beforeEach((to, from, next) => {
-	if (to.path == '/login')
-		sessionStorage.removeItem('_ubus_rpc_session');
+    if (to.path === '/login')
+        sessionStorage.removeItem('_ubus_rpc_session');
 
-	if (!sessionStorage.getItem('_ubus_rpc_session') && to.path != '/login')
-		next('/login')
-	else
-		next()
+    if (!sessionStorage.getItem('_ubus_rpc_session') && to.path !== '/login')
+        next('/login')
+    else
+        next()
 });
-
-
-import { mapGetters } from 'vuex'
 
 /* eslint-disable no-new */
 new Vue({
-	el: '#app',
-	store,
-	router,
-	render: (h)=>h(App),
-	computed: {
+    el: '#app',
+    store,
+    router,
+    render: (h) => h(App),
+    computed: {
         ...mapGetters({
             menus: 'getMenus',
             routes: 'getRoutes',
             logged: 'isLogged'
         })
     },
-	mounted: function() {
-		if (this.menus && this.logged) {
-			this.$router.addRoutes(this.routes);
-		}
-	}
+    mounted: function() {
+        if (this.menus && this.logged) {
+            this.$router.addRoutes(this.routes);
+        }
+    }
 });

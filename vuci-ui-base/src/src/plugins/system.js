@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2017  Jianhui Zhao <jianhuizhao329@gmail.com>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -18,32 +18,32 @@
 import * as ubus from './ubus.js'
 
 export function getInfo() {
-	return new Promise(function(resolve, reject) {
-		let req = [{
-			object: 'system',
-			method: 'info'
-		}, {
-			object: 'system',
-			method: 'board'
-		}];
-		ubus.call_batch(req).then((r) => {
-			if (r)
-				resolve(Object.assign({}, r[0], r[1]))
-		});
-	});
+    return new Promise(function(resolve, reject) {
+        let req = [{
+            object: 'system',
+            method: 'info'
+        }, {
+            object: 'system',
+            method: 'board'
+        }];
+        ubus.callBatch(req).then((r) => {
+            if (r)
+                resolve(Object.assign({}, r[0], r[1]))
+        });
+    });
 }
 
 const system = {}
 
-system.install  = function (Vue, options) {
-	if (system.installed)
-		return;
+system.install = function (Vue, options) {
+    if (system.installed)
+        return;
 
-	Vue.prototype.$system = {
-		getInfo: getInfo
-	}
+    Vue.prototype.$system = {
+        getInfo: getInfo
+    }
 
-	system.installed = true;
+    system.installed = true;
 }
 
 export default system

@@ -17,10 +17,10 @@ const state = {
 // for debugging purposes.
 const mutations = {
     addMenus (state, menus) {
-        state.menus  = menus;
+        state.menus = menus;
     },
     setLogged (state) {
-        state.logged  = true;
+        state.logged = true;
     }
 }
 
@@ -32,12 +32,12 @@ const actions = {
 // getters are functions
 const getters = {
     isLogged: state => state.logged,
-	getMenus: state => state.menus,
-	getRoutes: state => {
+    getMenus: state => state.menus,
+    getRoutes: state => {
         let routes = [{
             path: '/',
             component: () => import(/* webpackChunkName: "home" */ '@/views/home.vue'),
-            children:  [
+            children: [
                 {
                     path: '/status/overview',
                     component: () => import(/* webpackChunkName: "status.overview" */ '@/views/status.overview.vue'),

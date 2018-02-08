@@ -54,7 +54,7 @@
                     if (valid) {
                         this.$ubus.call('session', 'login', {username: this.form.username, password: this.form.password}).then((r) => {
                             if (r[0].ubus_rpc_session) {
-                                sessionStorage.setItem("_ubus_rpc_session", r[0].ubus_rpc_session);
+                                sessionStorage.setItem('_ubus_rpc_session', r[0].ubus_rpc_session);
 
                                 this.$loadMenu().then((r) => {
                                     this.addMenus(r.childs);
