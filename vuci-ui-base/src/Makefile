@@ -19,4 +19,13 @@ all: build
 prepare: .tmp/.download_stamp
 
 build: prepare
+	echo "// Automatically generated file; DO NOT EDIT." > ./src/apps/index.js
+	cd ./src/apps; for app in `ls -d */ | tr '/' ' '`; do echo "import $$app from './$$app'" >> ./index.js; done
+
+	echo -n "export default [" >> ./src/apps/index.js
+	cd ./src/apps; apps=`ls -d */ | sed 's/\///g' | tr '\n' ','`; echo -n "$${apps%?}]" >> ./index.js
+
 	npm run build
+
+	rm -rf ./.tmp/apps; mkdir ./.tmp/apps
+	cd ./src/apps; for app in `ls -d */ | tr '/' ' '`; do mv ../../dist/static/js/$$app.*.js ../../.tmp/apps; done

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import apps from '@/apps'
 
 Vue.use(Vuex)
 
@@ -35,25 +36,22 @@ const getters = {
 	getRoutes: state => {
         let routes = [{
             path: '/',
-            component: resolve => require(['@/views/home.vue'], resolve),
-            children: []
+            component: () => import(/* webpackChunkName: "home" */ '@/views/home.vue'),
+            children:  [
+                {
+                    path: '/status/overview',
+                    component: () => import(/* webpackChunkName: "status.overview" */ '@/views/status.overview.vue'),
+                }, {
+                    path: '/status/routes',
+                    component: () => import(/* webpackChunkName: "status.routes" */ '@/views/status.routes.vue'),
+                }
+            ]
         },
         {
             path: '*',
             redirect: '/404'
         }];
-
-        state.menus.forEach(function(m) {
-            if (m.childs) {
-                m.childs.forEach(function(item) {
-                    var r = {
-                        path: item.path,
-                        component: resolve => require([`@/views/${item.view.replace('/', '.')}.vue`], resolve)
-                    };
-                    routes[0].children.push(r);
-                });
-            }
-        });
+        routes[0].children = routes[0].children.concat(apps);
         return routes;
     }
 }

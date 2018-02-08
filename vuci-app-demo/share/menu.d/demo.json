@@ -1,0 +1,11 @@
+{
+    "demo": {
+        "title": "Demo",
+        "index": 10
+    },
+    "demo/demo": {
+        "title": "Demo",
+        "view": "demo/demo",
+        "index": 10
+    }
+}
