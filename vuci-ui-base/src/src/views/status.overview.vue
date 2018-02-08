@@ -20,36 +20,25 @@
 </style>>
 
 <script>
-    import {Progress} from 'iview';
-
     export default {
         data () {
             return {
                 loading: true,
                 columns_system: [
-                    {
-                        title: '',
-                        key: 'name',
-                        width: 200
-                    },
-                    {
-                        title: ' ',
-                        key: 'value'
-                    }
+                    {title: '', key: 'name', width: 200},
+                    {title: ' ', key: 'value'}
                 ],
                 data_system: [],
-
                 columns_mem: [
-                    {
-                        title: '',
-                        key: 'name',
-                        width: 200
-                    },
+                    {title: '', key: 'name', width: 200},
                     {
                         title: ' ',
                         key: 'value',
                         render: (h, params) => {
-                            return h(Progress, {props: {percent: parseFloat(params.row.value), 'stroke-width': 15}});
+                            return h('Progress', {
+                                props: {percent: parseFloat(params.row.value), 'stroke-width': 15},
+                                style: 'width: 50%'
+                            });
                         }
                     }
                 ],
