@@ -73,8 +73,8 @@
 		},
 		"write": {
 			"ubus": {
-				"vuci.system": [
-					"process_signal"
+				"system": [
+					"signal"
 				]
 			}
 		}

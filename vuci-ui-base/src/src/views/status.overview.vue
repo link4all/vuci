@@ -17,7 +17,7 @@
     .card {
         margin: 20px;
     }
-</style>>
+</style>
 
 <script>
     export default {

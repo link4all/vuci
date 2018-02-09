@@ -31,6 +31,7 @@ module.exports = {
     'vue/no-parsing-error': 'off',
     'curly': 'off',
     'no-throw-literal': 'off',
-    'comma-dangle': 'off'
+    'comma-dangle': 'off',
+    'object-property-newline': 'off'
   }
 }

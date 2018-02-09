@@ -53,17 +53,6 @@ static struct blob_buf buf;
 static struct uci_context *cursor;
 
 enum {
-	RPC_S_PID,
-	RPC_S_SIGNAL,
-	__RPC_S_MAX,
-};
-
-static const struct blobmsg_policy rpc_signal_policy[__RPC_S_MAX] = {
-	[RPC_S_PID]    = { .name = "pid",    .type = BLOBMSG_TYPE_INT32 },
-	[RPC_S_SIGNAL] = { .name = "signal", .type = BLOBMSG_TYPE_INT32 },
-};
-
-enum {
 	RPC_I_NAME,
 	RPC_I_ACTION,
 	__RPC_I_MAX,
@@ -387,30 +376,6 @@ static int rpc_vuci_process_list(struct ubus_context *ctx, struct ubus_object *o
 	blobmsg_close_array(&buf, c);
 
 	ubus_send_reply(ctx, req, buf.head);
-	return 0;
-}
-
-static int rpc_vuci_process_signal(struct ubus_context *ctx, struct ubus_object *obj,
-                         struct ubus_request_data *req, const char *method,
-                         struct blob_attr *msg)
-{
-	int pid, sig;
-	struct blob_attr *tb[__RPC_S_MAX];
-
-	blobmsg_parse(rpc_signal_policy, __RPC_S_MAX, tb,
-	              blob_data(msg), blob_len(msg));
-
-	if (!tb[RPC_S_SIGNAL] || !tb[RPC_S_PID]) {
-		errno = EINVAL;
-		return rpc_errno_status();
-	}
-
-	pid = blobmsg_get_u32(tb[RPC_S_PID]);
-	sig = blobmsg_get_u32(tb[RPC_S_SIGNAL]);
-
-	if (kill(pid, sig))
-		return rpc_errno_status();
-
 	return 0;
 }
 
@@ -2713,8 +2678,7 @@ static int rpc_vuci_api_init(const struct rpc_daemon_ops *o, struct ubus_context
 		UBUS_METHOD_NOARG("dmesg",        rpc_vuci_system_dmesg),
 		UBUS_METHOD_NOARG("diskfree",     rpc_vuci_system_diskfree),
 		UBUS_METHOD_NOARG("process_list", rpc_vuci_process_list),
-		UBUS_METHOD("process_signal",     rpc_vuci_process_signal,
-		                                  rpc_signal_policy),
+
 		UBUS_METHOD_NOARG("init_list",    rpc_vuci_init_list),
 		UBUS_METHOD("init_action",        rpc_vuci_init_action,
 		                                  rpc_init_policy),

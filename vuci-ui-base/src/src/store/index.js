@@ -44,6 +44,15 @@ const getters = {
                 }, {
                     path: '/status/routes',
                     component: () => import(/* webpackChunkName: "status.routes" */ '@/views/status.routes.vue'),
+                }, {
+                    path: '/status/syslog',
+                    component: () => import(/* webpackChunkName: "status.syslog" */ '@/views/status.syslog.vue'),
+                }, {
+                    path: '/status/dmesg',
+                    component: () => import(/* webpackChunkName: "status.dmesg" */ '@/views/status.dmesg.vue'),
+                }, {
+                    path: '/status/processes',
+                    component: () => import(/* webpackChunkName: "status.processes" */ '@/views/status.processes.vue'),
                 }
             ]
         },
