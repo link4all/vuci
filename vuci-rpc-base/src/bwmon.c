@@ -202,6 +202,9 @@ static void rpc_bwmon_collect(struct uloop_timeout *t)
 
 	if ((dir = opendir("/sys/class/net"))) {
 		while ((e = readdir(dir)) != NULL) {
+			if (!strcmp(e->d_name, "lo"))
+				continue;
+
 			up = read_int(e->d_name, "flags") & 1;
 			dev = get_device(e->d_name, up);
 

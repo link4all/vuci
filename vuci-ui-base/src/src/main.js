@@ -6,7 +6,7 @@ import menu from './plugins/menu.js'
 import system from './plugins/system.js'
 import {
     Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem,
-    Table, Spin, Modal, Message, Progress, Dropdown, DropdownMenu, DropdownItem
+    Table, Spin, Modal, Message, Progress, Dropdown, DropdownMenu, DropdownItem, Tabs, TabPane
 } from 'iview'
 import 'iview/dist/styles/iview.css'
 import store from './store'
@@ -38,6 +38,8 @@ Vue.component('Progress', Progress);
 Vue.component('Dropdown', Dropdown);
 Vue.component('DropdownMenu', DropdownMenu);
 Vue.component('DropdownItem', DropdownItem);
+Vue.component('Tabs', Tabs);
+Vue.component('TabPane', TabPane);
 
 Vue.prototype.$Message = Message;
 Vue.prototype.$Modal = Modal;

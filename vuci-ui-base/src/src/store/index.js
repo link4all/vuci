@@ -53,6 +53,9 @@ const getters = {
                 }, {
                     path: '/status/processes',
                     component: () => import(/* webpackChunkName: "status.processes" */ '@/views/status.processes.vue'),
+                }, {
+                    path: '/status/realtime',
+                    component: () => import(/* webpackChunkName: "status.realtime" */ '@/views/status.realtime.vue'),
                 }
             ]
         },
