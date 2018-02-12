@@ -10,7 +10,7 @@ import {
 } from 'iview'
 import 'iview/dist/styles/iview.css'
 import store from './store'
-import 'string-format-js'
+import '@zhaojh329/string.format.js'
 import { mapGetters } from 'vuex'
 
 Vue.config.productionTip = false
