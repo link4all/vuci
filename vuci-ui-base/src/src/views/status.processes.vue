@@ -1,10 +1,7 @@
 <template>
     <div>
         <h1>Processes</h1>
-        <Card :bordered="false" class="card">
-          <p slot="title">This list gives an overview over currently running system processes and their status.</p>
-            <Table :loading="loading" :columns="columns" :data="processes"></Table>
-        </Card>
+        <StatusTable title="This list gives an overview over currently running system processes and their status.":columns="columns" :data="processes"></StatusTable>
     </div>
 </template>
 

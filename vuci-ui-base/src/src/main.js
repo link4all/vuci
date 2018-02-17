@@ -13,6 +13,8 @@ import 'iview/dist/styles/iview.css'
 import store from './store'
 import '@zhaojh329/string.format.js'
 import { mapGetters } from 'vuex'
+import StatusList from './components/status-list.vue';
+import StatusTable from './components/status-table.vue';
 
 Vue.config.productionTip = false
 
@@ -43,6 +45,9 @@ Vue.component('Tabs', Tabs);
 Vue.component('TabPane', TabPane);
 Vue.component('Breadcrumb', Breadcrumb);
 Vue.component('BreadcrumbItem', BreadcrumbItem);
+
+Vue.component('StatusList', StatusList);
+Vue.component('StatusTable', StatusTable);
 
 Vue.prototype.$Message = Message;
 Vue.prototype.$Modal = Modal;

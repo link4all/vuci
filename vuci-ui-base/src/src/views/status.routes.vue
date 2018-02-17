@@ -1,18 +1,9 @@
 <template>
     <div>
         <h1>Routes</h1>
-        <Card :bordered="false" class="card">
-          <p slot="title">ARP</p>
-            <Table :loading="loading" :columns="columns_arp" :data="data_arp"></Table>
-        </Card>
-        <Card :bordered="false" class="card">
-          <p slot="title">Active IPv4-Routes</p>
-            <Table :loading="loading" :columns="columns_routes" :data="data_routes"></Table>
-        </Card>
-        <Card :bordered="false" class="card">
-          <p slot="title">Active IPv6-Routes</p>
-            <Table :loading="loading" :columns="columns_routes6" :data="data_routes6"></Table>
-        </Card>
+        <StatusTable title="ARP" :columns="columns_arp" :data="data_arp"></StatusTable>
+        <StatusTable title="Active IPv4-Routes" :columns="columns_routes" :data="data_routes"></StatusTable>
+        <StatusTable title="Active IPv6-Routes" :columns="columns_routes6" :data="data_routes6"></StatusTable>
     </div>
 </template>
 
