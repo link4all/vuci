@@ -1,6 +1,6 @@
 <template>
     <Layout style="height: 100%">
-         <Sider ref="side" style="overflow: scroll; height: 100%" collapsible hide-trigger collapsed-width="0" >
+         <Sider style="overflow: scroll; height: 100%">
             <Menu theme="dark" width="auto" @on-select="changeMenu" style="margin-top: 30px">
                 <Submenu v-for="menu in menus" :name="menu.path" :key="menu.path">
                     <template slot="title">{{menu.title}}</template>
@@ -9,26 +9,25 @@
             </Menu>
         </Sider>
         <Layout>
-            <Header class="layout-header">
+            <Header style="padding: 5px">
                 <Row type="flex">
-                     <Col span="1">
-                         <Button @click="toggleCollapse" :style="{background: 'transparent', border: 'none', transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}">
-                            <Icon type="navicon" size="32"></Icon>
-                        </Button>
+                     <Col span="8">
+                         <Breadcrumb>
+                            <BreadcrumbItem v-for="item in currentPath" :key="item">{{item}}</BreadcrumbItem>
+                         </Breadcrumb>
                     </Col>
-                    <Col span="21"></Col>
-                    <Col span="1">
-                        <Button @click="reboot">Reboot</Button>
-                    </Col>
-                    <Col span="1">
-                        <Button @click="logout">Logout</Button>
+                    <Col span="8" offset="8">
+                        <div style="right: 0; position: absolute;">
+                            <Button type="primary" @click="reboot">Reboot</Button>
+                            <Button type="primary" @click="logout">Logout</Button>
+                        </div>
                     </Col>
                 </Row>
             </Header>
-            <Content class="layout-content">
+            <Content class="content">
                 <router-view></router-view>
             </Content>
-            <Footer class="layout-copy">2017 &copy; Jianhui Zhao</Footer>
+            <Footer style="text-align: center;">2017 &copy; Jianhui Zhao</Footer>
         </Layout>
         <Spin fix v-if="rebooting">
             <Icon type="load-a" size=100 class="loading"></Icon>
@@ -45,8 +44,8 @@ import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
-            shrink: false,
-            rebooting: false
+            rebooting: false,
+            currentPath: ['status', 'overview']
         }
     },
     computed: {
@@ -59,10 +58,6 @@ export default {
     methods: {
         changeMenu (name) {
             this.$router.push(name);
-        },
-        toggleCollapse () {
-            this.shrink = !this.shrink;
-            this.$refs.side.toggleCollapse();
         },
         logout() {
             this.$router.push('/login');
@@ -90,7 +85,11 @@ export default {
             });
         }
     },
-
+    watch: {
+        '$route' (to) {
+            this.currentPath = to.path.split('/').slice(1);
+        }
+    },
     mounted: function() {
         this.$router.push('/status/overview');
     }
@@ -99,30 +98,12 @@ export default {
 </script>
 
 <style scoped>
-    .layout-header {
-        height: 60px;
-        margin: 15px;
-        background: #fff;
+    .content {
+        margin: 5px;
         border-radius: 4px;
-        padding: 10px;
-    }
-
-    .layout-content {
-        height: 100%;
-        margin: 15px;
-        background: #fff;
-        border-radius: 4px;
-        padding: 10px;
+        padding: 5px;
         overflow: scroll;
-    }
-
-    .layout-copy {
-        text-align: center;
-        height: 30px;
-        margin: 15px;
-        background: #fff;
-        border-radius: 4px;
-        padding: 10px;
+        background-color: white;
     }
 
     .loading {
