@@ -5,11 +5,12 @@ import ubus from './plugins/ubus.js'
 import menu from './plugins/menu.js'
 import system from './plugins/system.js'
 import {
-    Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem,
+    locale, Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem,
     Table, Spin, Modal, Message, Progress, Dropdown, DropdownMenu, DropdownItem, Tabs, TabPane,
     Breadcrumb, BreadcrumbItem
 } from 'iview'
 import 'iview/dist/styles/iview.css'
+import lang from 'iview/dist/locale/en-US';
 import store from './store'
 import '@zhaojh329/string.format.js'
 import { mapGetters } from 'vuex'
@@ -21,6 +22,9 @@ Vue.config.productionTip = false
 Vue.use(ubus);
 Vue.use(menu);
 Vue.use(system);
+
+// configure language
+locale(lang);
 
 Vue.component('Layout', Layout);
 Vue.component('Sider', Sider);
