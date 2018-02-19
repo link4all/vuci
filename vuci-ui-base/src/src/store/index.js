@@ -39,21 +39,27 @@ const getters = {
             component: () => import(/* webpackChunkName: "home" */ '@/views/home.vue'),
             children: [
                 {
+                    name: 'Overview',
                     path: '/status/overview',
                     component: () => import(/* webpackChunkName: "status.overview" */ '@/views/status.overview.vue'),
                 }, {
+                    name: 'Routes',
                     path: '/status/routes',
                     component: () => import(/* webpackChunkName: "status.routes" */ '@/views/status.routes.vue'),
                 }, {
+                    name: 'System Log',
                     path: '/status/syslog',
                     component: () => import(/* webpackChunkName: "status.syslog" */ '@/views/status.syslog.vue'),
                 }, {
+                    name: 'Kernel Log',
                     path: '/status/dmesg',
                     component: () => import(/* webpackChunkName: "status.dmesg" */ '@/views/status.dmesg.vue'),
                 }, {
+                    name: 'Processes',
                     path: '/status/processes',
                     component: () => import(/* webpackChunkName: "status.processes" */ '@/views/status.processes.vue'),
                 }, {
+                    name: 'Realtime Graphs',
                     path: '/status/realtime',
                     component: () => import(/* webpackChunkName: "status.realtime" */ '@/views/status.realtime.vue'),
                 }

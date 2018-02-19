@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>System Log</h1>
         <Input v-model="log" type="textarea" :autosize="{minRows: 10, maxRows: 25}" readonly></Input>
     </div>
 </template>

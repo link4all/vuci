@@ -13,7 +13,9 @@
                 <Row type="flex">
                      <Col span="8">
                          <Breadcrumb>
-                            <BreadcrumbItem v-for="item in currentPath" :key="item">{{item}}</BreadcrumbItem>
+                            <BreadcrumbItem v-for="item in currentPath" :key="item">
+                                <span style="font-size: 22px; color: black">{{ item }}</span>
+                            </BreadcrumbItem>
                          </Breadcrumb>
                     </Col>
                     <Col span="8" offset="8">
@@ -87,7 +89,7 @@ export default {
     },
     watch: {
         '$route' (to) {
-            this.currentPath = to.path.split('/').slice(1);
+            this.currentPath = ['Status', to.name];
         }
     },
     mounted: function() {

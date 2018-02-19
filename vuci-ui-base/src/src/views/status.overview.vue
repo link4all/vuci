@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Status</h1>
         <StatusList title="System" :data="systemData"></StatusList>
         <StatusList title="Memory" :data="memoryData"></StatusList>
     </div>
@@ -29,7 +28,7 @@
                     ['Firmware Version', r.release.description],
                     ['Kernel Version', r.kernel],
                     ['Local Time', (new Date(r.localtime * 1000)).toUTCString()],
-                    ['Uptime', r.uptime],
+                    ['Uptime', '%t'.format(r.uptime)],
                     ['Load Average', '%.2f, %.2f, %.2f'.format(r.load[0] / 65535.0, r.load[1] / 65535.0, r.load[2] / 65535.0)]
                 ];
 

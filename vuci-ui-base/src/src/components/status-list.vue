@@ -1,5 +1,5 @@
 <template>
-    <Card :bordered="false" class="card">
+    <Card class="card">
         <p slot="title">{{title}}</p>
         <div v-for="item in data" :key="item[0]">
             <Row class-name="row">

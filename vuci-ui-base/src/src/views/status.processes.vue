@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Processes</h1>
         <StatusTable title="This list gives an overview over currently running system processes and their status.":columns="columns" :data="processes"></StatusTable>
     </div>
 </template>

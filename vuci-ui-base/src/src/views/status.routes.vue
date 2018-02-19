@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Routes</h1>
         <StatusTable title="ARP" :columns="columns_arp" :data="data_arp"></StatusTable>
         <StatusTable title="Active IPv4-Routes" :columns="columns_routes" :data="data_routes"></StatusTable>
         <StatusTable title="Active IPv6-Routes" :columns="columns_routes6" :data="data_routes6"></StatusTable>
