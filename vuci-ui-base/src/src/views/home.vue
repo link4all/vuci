@@ -31,7 +31,7 @@
             </Content>
             <Footer style="text-align: center;">2017 &copy; Jianhui Zhao</Footer>
         </Layout>
-        <Spin fix v-if="rebooting">
+        <Spin fix v-if="rebooting" style="z-index:10000">
             <Icon type="load-a" size=100 class="loading"></Icon>
             <div>Rebooting...</div>
         </Spin>
@@ -70,6 +70,7 @@ export default {
                 content: '<p>Are you sure you want to restart your device?</p>',
                 onOk: () => {
                     this.$ubus.call('rpc-sys', 'reboot').then((r) => {
+                        sessionStorage.removeItem('_ubus_rpc_session');
                         window.setTimeout(() => {
                             let interval = window.setInterval(() => {
                                 axios.get('/').then((r) => {
