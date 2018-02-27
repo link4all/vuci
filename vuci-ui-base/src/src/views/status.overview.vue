@@ -5,12 +5,6 @@
     </div>
 </template>
 
-<style scoped>
-    .card {
-        margin: 10px;
-    }
-</style>
-
 <script>
     export default {
         data () {
