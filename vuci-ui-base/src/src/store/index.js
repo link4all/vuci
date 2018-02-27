@@ -62,6 +62,10 @@ const getters = {
                     name: 'Realtime Graphs',
                     path: '/status/realtime',
                     component: () => import(/* webpackChunkName: "status.realtime" */ '@/views/status.realtime.vue'),
+                }, {
+                    name: 'System',
+                    path: '/system/system',
+                    component: () => import(/* webpackChunkName: "system.system" */ '@/views/system.system.vue'),
                 }
             ]
         },

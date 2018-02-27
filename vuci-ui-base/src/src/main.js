@@ -7,7 +7,7 @@ import system from './plugins/system.js'
 import {
     locale, Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem,
     Table, Spin, Modal, Message, Progress, Dropdown, DropdownMenu, DropdownItem, Tabs, TabPane,
-    Breadcrumb, BreadcrumbItem
+    Breadcrumb, BreadcrumbItem, Select, Option
 } from 'iview'
 import 'iview/dist/styles/iview.css'
 import lang from 'iview/dist/locale/en-US';
@@ -49,6 +49,8 @@ Vue.component('Tabs', Tabs);
 Vue.component('TabPane', TabPane);
 Vue.component('Breadcrumb', Breadcrumb);
 Vue.component('BreadcrumbItem', BreadcrumbItem);
+Vue.component('Select', Select);
+Vue.component('Option', Option);
 
 Vue.component('StatusList', StatusList);
 Vue.component('StatusTable', StatusTable);
