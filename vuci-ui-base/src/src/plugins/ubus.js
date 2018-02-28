@@ -75,7 +75,7 @@ function _callCB(msgs, resolve, reject) {
         }
     }
 
-    resolve(data);
+    resolve((data.length > 1) ? data : data[0]);
 }
 
 function _call(batchs) {

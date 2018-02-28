@@ -45,8 +45,8 @@
 
         mounted: function() {
             this.$ubus.call('vuci.system', 'process_list').then((r) => {
-                if (r[0].processes) {
-                    this.processes = r[0].processes;
+                if (r.processes) {
+                    this.processes = r.processes;
                     this.loading = false;
                 }
             });

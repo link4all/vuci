@@ -22,7 +22,7 @@ const session = {}
 function isAlive() {
     return new Promise(function(resolve, reject) {
         ubus.call('session', 'access', {scope: 'ubus', object: 'session', function: 'access'}).then((r) => {
-            resolve(r[0].access);
+            resolve(r.access);
         }).catch((r) => {
             resolve(false);
         });
@@ -53,8 +53,8 @@ function startHeartbeat() {
 function login(username, password) {
     return new Promise(function(resolve, reject) {
         ubus.call('session', 'login', {username: username, password: password}).then((r) => {
-            if (r[0].ubus_rpc_session) {
-                sessionStorage.setItem('_ubus_rpc_session', r[0].ubus_rpc_session);
+            if (r.ubus_rpc_session) {
+                sessionStorage.setItem('_ubus_rpc_session', r.ubus_rpc_session);
                 startHeartbeat();
                 resolve(r);
             }

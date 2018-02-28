@@ -14,8 +14,8 @@
 
         mounted: function() {
             this.$ubus.call('vuci.system', 'syslog').then((r) => {
-                if (r[0].log) {
-                    this.log = r[0].log;
+                if (r.log) {
+                    this.log = r.log;
                 }
             });
         }

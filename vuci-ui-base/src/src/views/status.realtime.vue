@@ -55,12 +55,12 @@
                     return;
 
                 this.$ubus.call('vuci.network.bwmon', 'statistics', {device: this.curDev}).then((r) => {
-                    if (r[0].statistics) {
+                    if (r.statistics) {
                         if (!this.$refs['traffic'] || this.$refs['traffic'].length === 0)
                             return;
 
-                        let rxBytes = r[0].statistics.rx_bytes;
-                        let txBytes = r[0].statistics.tx_bytes;
+                        let rxBytes = r.statistics.rx_bytes;
+                        let txBytes = r.statistics.tx_bytes;
 
                         this.curRx = rxBytes[rxBytes.length - 1];
                         this.curTx = txBytes[txBytes.length - 1];
@@ -161,7 +161,7 @@
         },
         mounted: function() {
             this.$ubus.call('vuci.network.bwmon', 'devices').then((r) => {
-                this.devices = r[0].devices;
+                this.devices = r.devices;
             });
 
             window.setInterval(this.chart, 3000);
