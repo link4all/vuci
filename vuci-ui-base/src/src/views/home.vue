@@ -13,7 +13,7 @@
                 <Row type="flex">
                      <Col span="8">
                          <Breadcrumb>
-                            <BreadcrumbItem v-for="item in currentPath" :key="item">
+                            <BreadcrumbItem v-for="item in currentPathTitle" :key="item">
                                 <span style="font-size: 22px; color: black">{{ item }}</span>
                             </BreadcrumbItem>
                          </Breadcrumb>
@@ -47,7 +47,7 @@ export default {
     data() {
         return {
             rebooting: false,
-            currentPath: ['status', 'overview']
+            currentPathTitle: ['status', 'overview']
         }
     },
     computed: {
@@ -90,7 +90,16 @@ export default {
     },
     watch: {
         '$route' (to) {
-            this.currentPath = ['Status', to.name];
+            this.currentPathTitle = [ ];
+            this.menus.forEach((menu) => {
+                if (to.path.startsWith(menu.path)) {
+                    this.currentPathTitle.push(menu.title);
+                    menu.childs.forEach((menu) => {
+                        if (menu.path === to.path)
+                            this.currentPathTitle.push(menu.title);
+                    });
+                }
+            });
         }
     },
     mounted: function() {
