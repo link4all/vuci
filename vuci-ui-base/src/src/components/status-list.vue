@@ -3,8 +3,8 @@
         <p slot="title">{{title}}</p>
         <div v-for="item in data" :key="item[0]">
             <Row class-name="row">
-                <Col span="8">{{ item[0] }}</Col>
-                <Col span="16">
+                <Col span="4">{{ item[0] }}</Col>
+                <Col span="20">
                     <Progress v-if="item[2]" :percent=item[1] :stroke-width=12></Progress>
                     <span v-else>{{ item[1] }}</span>
                 </Col>

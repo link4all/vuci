@@ -102,6 +102,7 @@ export default {
 
 <style scoped>
     .content {
+        height: 100%;
         margin: 5px;
         border-radius: 4px;
         padding: 5px;
