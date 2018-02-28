@@ -17,7 +17,7 @@
 
 import * as ubus from './ubus.js'
 
-export function getInfo() {
+function getInfo() {
     return new Promise(function(resolve, reject) {
         let req = [{
             object: 'system',

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ubus from './plugins/ubus.js'
-import menu from './plugins/menu.js'
+import session from './plugins/session.js'
 import system from './plugins/system.js'
 import {
     locale, Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem,
@@ -20,7 +20,7 @@ import StatusTable from './components/status-table.vue';
 Vue.config.productionTip = false
 
 Vue.use(ubus);
-Vue.use(menu);
+Vue.use(session);
 Vue.use(system);
 
 // configure language
@@ -85,5 +85,7 @@ new Vue({
         if (this.menus && this.logged) {
             this.$router.addRoutes(this.routes);
         }
+
+        this.$session.startHeartbeat();
     }
 });

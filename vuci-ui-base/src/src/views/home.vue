@@ -62,6 +62,7 @@ export default {
             this.$router.push(name);
         },
         logout() {
+            sessionStorage.removeItem('_ubus_rpc_session');
             this.$router.push('/login');
         },
         reboot() {

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+    import * as menu from '../plugins/menu.js'
     import { mapGetters, mapMutations } from 'vuex'
 
     export default {
@@ -52,17 +53,13 @@
             handleSubmit() {
                 this.$refs['form'].validate((valid) => {
                     if (valid) {
-                        this.$ubus.call('session', 'login', {username: this.form.username, password: this.form.password}).then((r) => {
-                            if (r[0].ubus_rpc_session) {
-                                sessionStorage.setItem('_ubus_rpc_session', r[0].ubus_rpc_session);
-
-                                this.$loadMenu().then((r) => {
-                                    this.addMenus(r.childs);
-                                    this.setLogged();
-                                    this.$router.addRoutes(this.routes);
-                                    this.$router.push('/');
-                                });
-                            }
+                        this.$session.login(this.form.username, this.form.password).then((r) => {
+                            menu.loadMenu().then((r) => {
+                                this.addMenus(r);
+                                this.setLogged();
+                                this.$router.addRoutes(this.routes);
+                                this.$router.push('/');
+                            });
                         }).catch((r) => {
                             this.$Message.error('Login Fail! username or password wrong.');
                         });

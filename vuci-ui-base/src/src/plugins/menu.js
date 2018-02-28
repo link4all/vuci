@@ -80,23 +80,12 @@ function _toChildArray(node) {
     return node;
 }
 
-const menu = {}
-
-menu.install = function (Vue, options) {
-    if (menu.installed)
-        return;
-
-    Vue.prototype.$loadMenu = function() {
-        return new Promise(function(resolve, reject) {
-            ubus.call('vuci.ui', 'menu').then((r) => {
-                if (r[0].menu) {
-                    resolve(_toChildArray(_toChildTree(r[0].menu)));
-                }
-            });
+export function loadMenu() {
+    return new Promise(function(resolve, reject) {
+        ubus.call('vuci.ui', 'menu').then((r) => {
+            if (r[0].menu) {
+                resolve(_toChildArray(_toChildTree(r[0].menu)).childs);
+            }
         });
-    }
-
-    menu.installed = true;
+    });
 }
-
-export default menu
