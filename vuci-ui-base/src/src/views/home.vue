@@ -14,12 +14,12 @@
                      <Col span="8">
                          <Breadcrumb>
                             <BreadcrumbItem v-for="item in currentPathTitle" :key="item">
-                                <span style="font-size: 22px; color: black">{{ item }}</span>
+                                <span style="font-size: 22px; color: black;">{{ item }}</span>
                             </BreadcrumbItem>
                          </Breadcrumb>
                     </Col>
                     <Col span="8" offset="8">
-                        <div style="right: 0; position: absolute;">
+                        <div style="right: 15px; position: absolute;">
                             <Button type="primary" @click="reboot">Reboot</Button>
                             <Button type="primary" @click="logout">Logout</Button>
                         </div>
