@@ -13,7 +13,7 @@
                 <Row type="flex">
                      <Col span="8">
                          <Breadcrumb>
-                            <BreadcrumbItem v-for="item in currentPathTitle" :key="item">
+                            <BreadcrumbItem v-for="(item, index) in currentPathTitle" :key="index + item">
                                 <span style="font-size: 22px; color: black;">{{ item }}</span>
                             </BreadcrumbItem>
                          </Breadcrumb>
