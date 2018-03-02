@@ -16,6 +16,7 @@ import '@zhaojh329/string.format.js'
 import { mapGetters } from 'vuex'
 import StatusList from './components/status-list.vue';
 import StatusTable from './components/status-table.vue';
+import UMap from './components/umap.vue';
 
 Vue.config.productionTip = false
 
@@ -54,6 +55,7 @@ Vue.component('Option', Option);
 
 Vue.component('StatusList', StatusList);
 Vue.component('StatusTable', StatusTable);
+Vue.component('UMap', UMap);
 
 Vue.prototype.$Message = Message;
 Vue.prototype.$Modal = Modal;
