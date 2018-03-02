@@ -2,7 +2,7 @@
     <Form :model="formData" :label-width="80">
         <Card class="card">
             <p slot="title">System Properties</p>
-            <Tabs value="general">
+            <Tabs value="general" type="card" :animated="false">
                 <TabPane label="General Settings" name="general">
                     <FormItem label="Local Time">
                         <Input v-model="formData.localtime" readonly></Input>
@@ -34,6 +34,10 @@
 <style scoped>
     .card {
         margin: 10px;
+    }
+
+    .ivu-tabs {
+        overflow: visible;
     }
 </style>
 
