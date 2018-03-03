@@ -11,7 +11,7 @@ PKG_NAME:=vuci-rpc-base
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Jianhui Zhao <jianhuizhao329@gmail.com>
 
-PKG_LICENSE:=GPL-3.0
+PKG_LICENSE:=LGPL-2.1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk

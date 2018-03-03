@@ -10,7 +10,7 @@ PKG_NAME:=vuci-ui-base
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Jianhui Zhao <jianhuizhao329@gmail.com>
 
-PKG_LICENSE:=GPL-3.0
+PKG_LICENSE:=LGPL-2.1
 
 PKG_BUILD_PARALLEL:=1
 
