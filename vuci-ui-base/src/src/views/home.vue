@@ -1,7 +1,7 @@
 <template>
     <Layout style="height: 100%">
          <Sider style="overflow: scroll; height: 100%">
-            <Menu theme="dark" width="auto" @on-select="changeMenu" style="margin-top: 30px">
+            <Menu theme="dark" width="auto" @on-select="changeMenu" style="margin-top: 30px" accordion>
                 <Submenu v-for="menu in menus" :name="menu.path" :key="menu.path">
                     <template slot="title">{{menu.title}}</template>
                     <MenuItem v-for="item in menu.childs" :name="item.path" :key="item.path">{{item.title}}</MenuItem>
