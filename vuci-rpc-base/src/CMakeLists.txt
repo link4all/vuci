@@ -15,6 +15,6 @@ set_target_properties(vuci PROPERTIES OUTPUT_NAME vuci PREFIX "")
 
 add_library(bwmon MODULE bwmon.c)
 target_link_libraries(bwmon ubox ubus ${crypt})
-set_target_properties(bwmon PROPERTIES OUTPUT_NAME bwmon PREFIX "")
+set_target_properties(bwmon PROPERTIES OUTPUT_NAME bwmon-vuci PREFIX "")
 
 install(TARGETS vuci bwmon LIBRARY DESTINATION lib)

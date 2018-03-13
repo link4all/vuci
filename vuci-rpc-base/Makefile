@@ -35,7 +35,7 @@ endef
 define Package/vuci-rpc-base/install
 	$(INSTALL_DIR) $(1)/usr/lib/rpcd
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/vuci.so $(1)/usr/lib/rpcd/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/bwmon.so $(1)/usr/lib/rpcd/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/bwmon-vuci.so $(1)/usr/lib/rpcd/
 endef
 
 define Package/vuci-rpc-base/postinst
