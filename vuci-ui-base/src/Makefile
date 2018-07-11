@@ -9,7 +9,7 @@ all: build
 .tmp/.download_stamp: package.json
 	if [ -f node_modules.tar.xz ]; \
 	then \
-		tar Jxvf node_modules.tar.xz && rm node_modules.tar.xz; \
+		tar Jxf node_modules.tar.xz && rm node_modules.tar.xz; \
 	else \
 		npm install; \
 	fi
@@ -23,7 +23,7 @@ build: prepare
 	cd ./src/apps; for app in `ls -d */ | tr '/' ' '`; do echo "import $$app from './$$app'" >> ./index.js; done
 
 	echo -n "export default [" >> ./src/apps/index.js
-	cd ./src/apps; apps=`ls -d */ | sed 's/\///g' | tr '\n' ','`; echo -n "$${apps%?}]" >> ./index.js
+	cd ./src/apps; apps=`ls -d */ | sed 's/\///g' | tr '\n' ','`; echo "$${apps%?}]" >> ./index.js
 
 	npm run build
 
