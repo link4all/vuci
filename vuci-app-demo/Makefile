@@ -34,7 +34,7 @@ endef
 
 define Build/Compile
 	rm $(PKG_BUILD_DIR)/../vuci-ui-base/.configured_*
-	$(MAKE) -C $(TOPDIR) package/feeds/vuci/vuci-ui-base/compile
+	$(MAKE) -C $(TOPDIR)/package/feeds/vuci/vuci-ui-base
 endef
 
 define Package/vuci-app-demo/install
