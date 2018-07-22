@@ -2,6 +2,8 @@
 
 ![](https://img.shields.io/badge/license-GPLV3-brightgreen.svg?style=plastic "License")
 
+![](/demo-0.png)
+
 VUCI - OpenWrt后台管理框架，基于[vuejs2](https://github.com/vuejs/vue)和[iView](https://github.com/ElemeFE/iview/iview)。
 
 一个全新的Web接口.它不再使用Lua，而是使用MVVM框架。通过[ubus](https://wiki.openwrt.org/zh-cn/doc/techref/ubus)存取各种系统数据
