@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import apps from '@/apps'
 
 Vue.use(Vuex)
 
@@ -73,7 +72,7 @@ const getters = {
             path: '*',
             redirect: '/404'
         }];
-        routes[0].children = routes[0].children.concat(apps);
+
         return routes;
     }
 }
