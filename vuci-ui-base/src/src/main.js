@@ -4,6 +4,7 @@ import router from './router'
 import ubus from './plugins/ubus.js'
 import session from './plugins/session.js'
 import system from './plugins/system.js'
+import uci from './plugins/uci.js'
 import {
     locale, Layout, Sider, Card, Form, FormItem, Input, Icon, Button, Row, Col, Menu, Submenu, MenuItem,
     Table, Spin, Modal, Message, Progress, Dropdown, DropdownMenu, DropdownItem, Tabs, TabPane,
@@ -17,12 +18,18 @@ import { mapGetters } from 'vuex'
 import StatusList from './components/status-list.vue';
 import StatusTable from './components/status-table.vue';
 import UMap from './components/umap.vue';
+import TypedSection from './components/typed-section.vue';
+import DummyValue from './components/dummy-value.vue';
+import InputValue from './components/input-value.vue';
+import ListValue from './components/list-value.vue';
+import NamedSection from './components/named-section.vue';
 
 Vue.config.productionTip = false
 
 Vue.use(ubus);
 Vue.use(session);
 Vue.use(system);
+Vue.use(uci);
 
 // configure language
 locale(lang);
@@ -56,6 +63,11 @@ Vue.component('Option', Option);
 Vue.component('StatusList', StatusList);
 Vue.component('StatusTable', StatusTable);
 Vue.component('UMap', UMap);
+Vue.component('TypedSection', TypedSection);
+Vue.component('DummyValue', DummyValue);
+Vue.component('InputValue', InputValue);
+Vue.component('ListValue', ListValue);
+Vue.component('NamedSection', NamedSection);
 
 Vue.prototype.$Message = Message;
 Vue.prototype.$Modal = Modal;

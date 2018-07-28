@@ -1,58 +1,37 @@
 <template>
-    <UMap :umap="umap" config="system"></UMap>
+    <UMap caption="System" description="Here you can configure the basic aspects of your device like its hostname or the timezone." config="system">
+        <TypedSection v-for="s in system" :session="s" :key="s['.name']" caption="System Properties" type="system">
+            <Tabs value="general">
+                <TabPane label="General" name="general">
+                    <DummyValue caption="Local Time" :value="localtime"></DummyValue>
+                    <InputValue caption="Hostname" :value="s.hostname"></InputValue>
+                </TabPane>
+                <TabPane label="Log" name="log">
+                    <InputValue caption="Timezone" :value="s.timezone"></InputValue>
+                    <InputValue caption="Zonename" :value="s.zonename"></InputValue>
+                    <ListValue caption="Log output level" :value="s.conloglevel" :choices="choices"></ListValue>
+                </TabPane>
+            </Tabs>
+        </TypedSection>
+        <NamedSection caption="Time Synchronization" v-if="system.hasOwnProperty('ntp')">
+            <InputValue caption="Enabled" :value="system.ntp.enabled"></InputValue>
+        </NamedSection>
+    </UMap>
 </template>
 
 <script>
     export default {
-        data () {
+        data() {
             return {
-                umap: [
-                    {
-                        title: 'System Properties',
-                        tabs: [
-                            {
-                                name: 'general',
-                                label: 'General Settings',
-                                options: [
-                                    {
-                                        name: 'localtime',
-                                        label: 'Local Time',
-                                        widget: 'input',
-                                        readonly: true
-                                    }, {
-                                        name: 'hostname',
-                                        label: 'Hostname',
-                                        widget: 'input'
-                                    }, {
-                                        name: 'timezone',
-                                        label: 'Timezone',
-                                        widget: 'select',
-                                        choices: [
-                                            ['UTC', 'UTC'],
-                                            ['Ua', 'UA']
-                                        ]
-                                    }
-                                ]
-                            }, {
-                                name: 'logging',
-                                label: 'Logging'
-                            }, {
-                                name: 'language',
-                                label: 'Language and Style'
-                            }
-                        ],
-                        options: [
-                            {
-                                name: 'hostname',
-                                label: 'Hostname',
-                                widget: 'input'
-                            }
-                        ]
-                    }, {
-                        title: 'Time Synchronization',
-                    }
-                ]
+                localtime: (new Date()).toLocaleString(),
+                choices: [['8', 'Debug'], ['7', 'Info'], ['6', 'Notice'], ['5', 'Warning'], ['4', 'Error'], ['3', 'Critical'], ['2', 'Alert'], ['1', 'Emergency']],
+                system: {}
             }
         },
+        mounted() {
+            this.$uci.load('system').then((r) => {
+                this.system = this.$uci.get(r);
+            });
+        }
     }
 </script>
