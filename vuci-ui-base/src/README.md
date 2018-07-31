@@ -1,6 +1,6 @@
 # vuci
 
-> VUCI Web Interface for OpenWRT
+> Web Interface for OpenWRT implemented in vue.js and muse-ui
 
 ## Build Setup
 

@@ -26,12 +26,8 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'semi': 'off',
-    'indent': 'off',
-    'space-before-function-paren': 'off',
-    'vue/no-parsing-error': 'off',
     'curly': 'off',
-    'no-throw-literal': 'off',
-    'comma-dangle': 'off',
-    'object-property-newline': 'off'
+    'space-before-function-paren': 'off',
+    'no-throw-literal': 'off'
   }
 }

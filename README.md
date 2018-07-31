@@ -4,7 +4,7 @@
 
 ![](/demo-0.png)
 
-VUCI - Web user interface based on [vuejs2](https://github.com/vuejs/vue) and [iView](https://github.com/iview/iview) for OpenWrt.
+Web Interface for OpenWRT implemented in [vue.js](https://github.com/vuejs/vue) and [muse-ui](https://muse-ui.org)
 
 A new web interface with a different architecture. It doesn't use Lua anymore, but use MVVM framework.
 To access any kind of system data through [ubus](https://wiki.openwrt.org/doc/techref/ubus)(with the help of
@@ -27,13 +27,19 @@ Install vuci packages:
 Select package vuci in menuconfig and compile new image.
 
     VUCI  --->
-        <*> vuci-ui-base.......................................... VUCI Web Interface</*>
+        <*>  vuci-ui-base. VUCI Web Interface</*>
+        [*]   Use existing nodejs installation on the host system
 
+[Installing Node.js](https://nodejs.org/en/download/package-manager/)
+
+Compile
+
+    make V=s
 
 # How to develop and debug
 First, enter your build directory of the vuci-ui-base
 
-	$ cd build_dir/target-mipsel_24kc_musl/vuci-ui-base/
+	cd build_dir/target-mipsel_24kc_musl/vuci-ui-base/
 
 Then modify the configuration file according to your own environment.
 You may need to modify proxyTable and host.

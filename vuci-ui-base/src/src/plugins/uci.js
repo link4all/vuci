@@ -20,39 +20,39 @@ import * as ubus from './ubus.js'
 let state = {}
 
 function load(config) {
-    return new Promise(function(resolve, reject) {
-        ubus.call('uci', 'get', {config: config}).then((r) => {
-            state[config] = r.values;
-            resolve(config);
-        }).catch((r) => {
-            reject(r);
-        });
+  return new Promise(function(resolve, reject) {
+    ubus.call('uci', 'get', {config: config}).then((r) => {
+      state[config] = r.values;
+      resolve(config);
+    }).catch((r) => {
+      reject(r);
     });
+  });
 }
 
 function get(config, session, option) {
-    let values = state[config];
+  let values = state[config];
 
-    if (session) {
-        values = values[session];
-        if (option)
-            return values[option];
-    }
-    return values;
+  if (session) {
+    values = values[session];
+    if (option)
+      return values[option];
+  }
+  return values;
 }
 
 const uci = {}
 
-uci.install = function (Vue, options) {
-    if (uci.installed)
-        return;
+uci.install = function(Vue, options) {
+  if (uci.installed)
+    return;
 
-    Vue.prototype.$uci = {
-        load: load,
-        get: get
-    }
+  Vue.prototype.$uci = {
+    load: load,
+    get: get
+  }
 
-    uci.installed = true;
+  uci.installed = true;
 }
 
 export default uci

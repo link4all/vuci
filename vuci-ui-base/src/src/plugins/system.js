@@ -18,32 +18,32 @@
 import * as ubus from './ubus.js'
 
 function getInfo() {
-    return new Promise(function(resolve, reject) {
-        let req = [{
-            object: 'system',
-            method: 'info'
-        }, {
-            object: 'system',
-            method: 'board'
-        }];
-        ubus.callBatch(req).then((r) => {
-            if (r)
-                resolve(Object.assign({}, r[0], r[1]))
-        });
+  return new Promise(function(resolve, reject) {
+    let req = [{
+      object: 'system',
+      method: 'info'
+    }, {
+      object: 'system',
+      method: 'board'
+    }];
+    ubus.callBatch(req).then((r) => {
+      if (r)
+        resolve(Object.assign({}, r[0], r[1]))
     });
+  });
 }
 
 const system = {}
 
-system.install = function (Vue, options) {
-    if (system.installed)
-        return;
+system.install = function(Vue, options) {
+  if (system.installed)
+    return;
 
-    Vue.prototype.$system = {
-        getInfo: getInfo
-    }
+  Vue.prototype.$system = {
+    getInfo: getInfo
+  }
 
-    system.installed = true;
+  system.installed = true;
 }
 
 export default system

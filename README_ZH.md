@@ -4,7 +4,7 @@
 
 ![](/demo-0.png)
 
-VUCI - OpenWrt后台管理框架，基于[vuejs2](https://github.com/vuejs/vue)和[iView](https://github.com/ElemeFE/iview/iview)。
+OpenWrt后台管理框架，使用[vuejs2](https://github.com/vuejs/vue)和[muse-ui](https://muse-ui.org/#/zh-CN)实现
 
 一个全新的Web接口.它不再使用Lua，而是使用MVVM框架。通过[ubus](https://wiki.openwrt.org/zh-cn/doc/techref/ubus)存取各种系统数据
 (通过[uhttpd-mod-ubus](https://wiki.openwrt.org/zh-cn/doc/techref/ubus#通过http访问ubus)提供基于HTTP的接口API)。
@@ -26,13 +26,19 @@ VUCI - OpenWrt后台管理框架，基于[vuejs2](https://github.com/vuejs/vue)�
 在menuconfig里面选择vuci软件包然后编译新固件.
 
     VUCI  --->
-        <*> vuci-ui-base.......................................... VUCI Web Interface</*>
+        <*>  vuci-ui-base. VUCI Web Interface</*>
+        [*]   Use existing nodejs installation on the host system
 
+[安装 Nodejs](https://nodejs.org/zh-cn/download/package-manager)
+
+编译
+
+    make V=s
 
 # 如何开发和调试
 首先进入你的vuci-ui-base的编译目录
 
-	$ cd build_dir/target-mipsel_24kc_musl/vuci-ui-base/
+	cd build_dir/target-mipsel_24kc_musl/vuci-ui-base/
 
 然后根据自己的环境修改配置。您可能需要修改 proxyTable 和 host。
 
